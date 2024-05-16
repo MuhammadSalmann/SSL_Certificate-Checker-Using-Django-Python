@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:wght@400;900&family=Poppins&family=Sacramento&family=Ubuntu&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+      list-style: none;
+      text-decoration: none;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+    }
+
+    .container {
+      min-height: 100vh;
+      width: 100%;
+      background-color: #11191F;
+      display: flex;
+      justify-content: center;
+    }
+
+    .parent {
+      min-height: 100vh;
+      width: 75vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 45px 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #D5DCE2;
+      margin: 10px 0;
+    }
+
+    .main-heading:hover {
+      border-bottom: 1px solid #19B3E6;
+    }
+
+    .cont-1 {
+      font-size: 1.2rem;
+      background-color: #18232C;
+    }
+
+    .cont-2 {
+      font-size: 1.2rem;
+      background-color: #18232C;
+    }
+
+    .certificate-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .certificate-table th,
+    .certificate-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .certificate-table .heading {
+      font-weight: bold;
+    }
+
+    .certificate-table .attribute {
+      font-weight: bold;
+    }
+
+    .certificate-table .value {
+      color: #abcde2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="parent">
+      <div class="cont-1">
+        <table class="certificate-table">
+          <thead>
+            <tr>
+              <th class="heading">Attribute</th>
+              <th class="heading">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key, value in cert.items %}
+            {% if key != "result" %}
+            <tr>
+              <td class="attribute">{{ key }}</td>
+              <td class="value">{{ value }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <h1><span class="main-heading">Result</span></h1>
+      <div class="cont-2">
+        <table class="certificate-table">
+          <thead>
+            <tr>
+              <th class="heading">Attribute</th>
+              <th class="heading">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key, value in cert.result.items %}
+            <tr>
+              <td class="attribute">{{ key }}</td>
+              <td class="value">{{ value }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
